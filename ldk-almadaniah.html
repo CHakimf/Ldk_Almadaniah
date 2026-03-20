@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <title>Pesan dari LDK Al-Madaniah 💌</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
+
+    :root {
+      --hijau-tua:    #0a2e1a;
+      --hijau-tengah: #1a5c32;
+      --emas:         #c9a84c;
+      --emas-terang:  #a07820;
+      --emas-gelap:   #7a5a10;
+      --gold-glow:    rgba(201,168,76,0.35);
+      --teks-utama:   #1a1a1a;
+      --teks-sub:     #4a4a4a;
+    }
+
+    html, body { position: relative; height: 100%; margin: 0; padding: 0; }
+    body {
+      background: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px; color: var(--teks-utama);
+      text-shadow: none; overflow: hidden;
+    }
+
+    #islamic-pattern {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0; pointer-events: none; opacity: 0.07;
+      background-image:
+        repeating-linear-gradient(45deg,  var(--emas) 0, var(--emas) 1px, transparent 0, transparent 50%),
+        repeating-linear-gradient(-45deg, var(--emas) 0, var(--emas) 1px, transparent 0, transparent 50%);
+      background-size: 28px 28px;
+    }
+    #top-gradient {
+      position: fixed; top: 0; left: 0; right: 0; height: 120px;
+      background: linear-gradient(to bottom, rgba(10,46,26,0.07), transparent);
+      z-index: 0; pointer-events: none;
+    }
+    #bot-gradient {
+      position: fixed; bottom: 0; left: 0; right: 0; height: 120px;
+      background: linear-gradient(to top, rgba(10,46,26,0.07), transparent);
+      z-index: 0; pointer-events: none;
+    }
+    #golden-border {
+      position: fixed; top: 12px; left: 12px; right: 12px; bottom: 12px;
+      border: 2px solid var(--emas); border-radius: 8px;
+      z-index: 1; pointer-events: none;
+      box-shadow: inset 0 0 30px rgba(201,168,76,0.07), 0 0 16px rgba(201,168,76,0.1);
+    }
+    #golden-border::before {
+      content: ''; position: absolute;
+      top: 4px; left: 4px; right: 4px; bottom: 4px;
+      border: 1px solid rgba(201,168,76,0.22); border-radius: 5px;
+    }
+    .corner-ornament {
+      position: fixed; width: 42px; height: 42px; z-index: 2; pointer-events: none;
+    }
+    .corner-ornament.tl { top: 8px; left: 8px; }
+    .corner-ornament.tr { top: 8px; right: 8px; transform: scaleX(-1); }
+    .corner-ornament.bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
+    .corner-ornament.br { bottom: 8px; right: 8px; transform: scale(-1); }
+
+    .overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(6px);
+      z-index: 999;
+    }
+    .loading-message { font-size: 15px; color: var(--hijau-tua); text-align: center; }
+    .blocklove { display: none; flex-direction: column; justify-content: center; align-items: center; }
+    .lovein {
+      background: linear-gradient(135deg, var(--hijau-tengah), var(--hijau-tua));
+      border: 2px solid var(--emas); border-radius: 50%;
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .3s ease;
+      box-shadow: 0 4px 20px var(--gold-glow);
+    }
+    .lovein:hover { transform: scale(.9); }
+    .lovein svg { stroke: var(--emas); width: 34px; height: 34px; fill: none; stroke-width: 1.5; }
+    #ket {
+      margin: 12px 0 0 0; font-size: 12px; color: var(--hijau-tengah);
+      letter-spacing: 1px; text-align: center; font-weight: 600;
+      animation: ketBlink 1.5s ease infinite alternate;
+    }
+    @keyframes ketBlink { from { opacity: 0.5; } to { opacity: 1; } }
+
+    #ldk-logo-overlay {
+      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+      z-index: 1000; text-align: center; pointer-events: none;
+      opacity: 1; white-space: nowrap;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    #ldk-logo-overlay .org-name {
+      font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: 3px; color: var(--emas-gelap); text-transform: uppercase;
+      margin-top: 4px;
+    }
+    #ldk-logo-overlay img {
+      width: 54px; height: 54px; object-fit: contain;
+      border-radius: 50%; border: 2px solid var(--emas);
+      box-shadow: 0 0 14px rgba(201,168,76,0.4);
+      background: #fff;
+    }
+
+    .swiper { width: 100%; height: 100%; }
+    .swiper-slide {
+      text-align: center; display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      margin-top: -40px; position: relative; z-index: 2;
+    }
+    .swiper-pagination { margin-bottom: 22vh; }
+    .swiper-pagination-bullet-active { background-color: var(--emas) !important; opacity: 1 !important; }
+    .swiper-pagination-bullet { background-color: rgba(201,168,76,0.4) !important; }
+    .swiper-button-next, .swiper-button-prev { display: none; }
+
+    .scale0 { opacity: 0; transform: scale(0); transition: all .9s ease; }
+    .scale1 { opacity: 1; transform: scale(1); transition: all .9s ease; }
+    .abs { position: absolute !important; }
+
+    .stiker {
+      display: flex; justify-content: center; align-items: center;
+      margin: 0 auto 14px; transition: all .75s ease;
+    }
+    .emas-border {
+      width: 88px; height: 88px; border-radius: 50%;
+      border: 2px solid var(--emas);
+      background: radial-gradient(circle, rgba(201,168,76,0.1), rgba(10,46,26,0.04));
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px var(--gold-glow);
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif; color: var(--teks-utama);
+      padding: 0 24px; line-height: 1.5em; margin: 0;
+    }
+    .arabic {
+      font-family: 'Scheherazade New', serif; font-size: 26px;
+      color: var(--hijau-tengah); display: block; margin-bottom: 10px; direction: rtl;
+    }
+    .green-text { color: var(--hijau-tengah); font-weight: 700; }
+
+    .main-card { margin-top: 10px; display: flex; flex-direction: column; align-items: center; }
+    .game-board {
+      margin-top: 10px; display: grid;
+      grid-template-columns: repeat(4, 48px); grid-gap: 10px;
+    }
+    .card {
+      font-family: Arial, sans-serif; width: 48px; height: 48px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(10,46,26,0.12));
+      border: 1.5px solid var(--emas);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0; border-radius: 10px; transform: scale(0);
+      position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .card canvas { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+    .card.flipped { font-size: 1.4em; background: rgba(201,168,76,0.07); transition: all .5s ease; }
+    @keyframes appear { to { transform: scale(1); } }
+
+    .blocktext {
+      margin-top: 10px; position: relative; width: 100%; height: 270px; overflow: auto;
+    }
+    #teks3 {
+      font-size: 14px; font-weight: 400; line-height: 1.7em;
+      padding: 0 22px; color: var(--teks-utama);
+    }
+
+    #Tombol {
+      margin: 0; padding: 0; transform: scale(0); opacity: 0;
+      margin-left: auto; margin-right: auto;
+      display: flex; justify-content: center; align-items: center;
+      list-style: none; transition: all .75s ease;
+    }
+    #Tombol a {
+      cursor: pointer; display: inline-flex; align-items: center;
+      margin: 10px; transition: all .2s ease; padding: 10px 20px;
+      outline: 0; border: 2px solid var(--emas); border-radius: 30px;
+      background: linear-gradient(135deg, var(--hijau-tengah), var(--hijau-tua));
+      color: #fff; font-size: 13px; font-weight: 600; white-space: nowrap;
+      box-shadow: 0 4px 16px var(--gold-glow); text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    #Tombol a:hover { transform: scale(.93); }
+
+    @keyframes boom {
+      0%   { transform: scale(0.5); opacity: 1; }
+      70%  { transform: scale(1.8); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-7px); }
+      20%, 40%, 60%, 80%      { transform: translateX(7px); }
+    }
+    .shake { animation: shake 0.6s ease-in-out; }
+
+    canvas#game-canvas {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; z-index: -1; pointer-events: none;
+    }
+
+    .swal2-modal {
+      background: #ffffff; border: 2px solid var(--emas);
+      border-radius: 20px; max-width: 330px;
+    }
+    .swal2-modal > * { font-family: 'Poppins', sans-serif; color: var(--teks-utama); }
+    .swal2-title { color: var(--hijau-tua); font-size: 20px; }
+    .swal2-container.swal2-backdrop-show { background: rgba(0,0,0,.45); }
+    .swal2-styled.swal2-confirm {
+      background: linear-gradient(135deg, var(--hijau-tengah), var(--hijau-tua));
+      color: #fff; border: none; border-radius: 30px;
+      font-weight: 700; font-family: 'Poppins', sans-serif;
+    }
+
+    .blocktext::-webkit-scrollbar { width: 4px; }
+    .blocktext::-webkit-scrollbar-track { background: rgba(201,168,76,0.08); }
+    .blocktext::-webkit-scrollbar-thumb { background: var(--emas); border-radius: 4px; }
+    .ti-cursor { color: var(--hijau-tengah) !important; }
+  </style>
+</head>
+<body>
+
+  <audio id="bgAudio"
+    src="https://cdn.jsdelivr.net/gh/CHakimf/Forum-Mahasiswa@main/india_happy-ramadhan-488109.mp3"
+    type="audio/mpeg" loop style="display:none"></audio>
+
+  <div id="islamic-pattern"></div>
+  <div id="top-gradient"></div>
+  <div id="bot-gradient"></div>
+  <div id="golden-border"></div>
+
+  <svg class="corner-ornament tl" viewBox="0 0 42 42" fill="none">
+    <path d="M4 4 L22 4 L22 7 L7 7 L7 22 L4 22 Z" fill="rgba(201,168,76,0.65)"/>
+    <circle cx="22" cy="22" r="3" fill="rgba(201,168,76,0.4)"/>
+    <path d="M11 11 Q22 4 33 11" stroke="rgba(201,168,76,0.35)" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="corner-ornament tr" viewBox="0 0 42 42" fill="none">
+    <path d="M4 4 L22 4 L22 7 L7 7 L7 22 L4 22 Z" fill="rgba(201,168,76,0.65)"/>
+    <circle cx="22" cy="22" r="3" fill="rgba(201,168,76,0.4)"/>
+    <path d="M11 11 Q22 4 33 11" stroke="rgba(201,168,76,0.35)" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="corner-ornament bl" viewBox="0 0 42 42" fill="none">
+    <path d="M4 4 L22 4 L22 7 L7 7 L7 22 L4 22 Z" fill="rgba(201,168,76,0.65)"/>
+    <circle cx="22" cy="22" r="3" fill="rgba(201,168,76,0.4)"/>
+    <path d="M11 11 Q22 4 33 11" stroke="rgba(201,168,76,0.35)" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="corner-ornament br" viewBox="0 0 42 42" fill="none">
+    <path d="M4 4 L22 4 L22 7 L7 7 L7 22 L4 22 Z" fill="rgba(201,168,76,0.65)"/>
+    <circle cx="22" cy="22" r="3" fill="rgba(201,168,76,0.4)"/>
+    <path d="M11 11 Q22 4 33 11" stroke="rgba(201,168,76,0.35)" stroke-width="1" fill="none"/>
+  </svg>
+
+  <div id="ldk-logo-overlay">
+    <img src="https://i.ibb.co.com/PGgkMztN/1000143075-removebg-preview.png" alt="Logo LDK Al-Madaniah"
+      style="width:48px;height:48px;object-fit:contain;border-radius:50%;border:2px solid var(--emas);box-shadow:0 0 12px var(--gold-glow);display:block;margin:0 auto 4px;" />
+    <div class="org-name">LDK Al-Madaniah</div>
+  </div>
+
+  <div class="overlay" id="overlayEl">
+    <div class="loading-message" id="loadingMsg">
+      <span style="font-size:30px;display:block;margin-bottom:10px;">🕌</span>
+      <span style="font-family:'Scheherazade New',serif;font-size:24px;color:var(--hijau-tengah);">بِسْمِ اللّٰهِ</span><br>
+      <span style="font-size:12px;color:var(--teks-sub);margin-top:6px;display:block;">Tunggu sebentar ya, Akhina..</span>
+    </div>
+    <div id="loveIn" class="blocklove">
+      <label class="lovein" id="btnBuka">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 21.593c-5.63-5.539-11-10.297-11-14.402
+               0-3.791 3.068-5.191 5.281-5.191
+               1.312 0 4.151.501 5.719 4.457
+               1.59-3.968 4.464-4.447 5.726-4.447
+               2.54 0 5.274 1.621 5.274 5.181
+               0 4.069-5.136 8.625-11 14.402z"/>
+        </svg>
+      </label>
+      <p id="ket">Buka Pesan 🫶</p>
+    </div>
+  </div>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div id="stiker1" class="scale0 stiker">
+          <div class="emas-border"><span style="font-size:44px;">🕌</span></div>
+        </div>
+        <h1 id="teks1" class="scale0" style="font-size:19px;">
+          <span class="arabic">السَّلَامُ عَلَيْكُمْ</span>
+          Ada pesan spesial<br>
+          dari <span class="green-text">LDK Al-Madaniah</span> ✨<br>
+          <span style="font-size:14px;font-weight:300;color:var(--teks-sub);">untukmu, Akhina/Ukhti.. 🫶</span><br><br>
+          <span style="font-size:12px;color:var(--emas-terang);">► Tap untuk lanjut</span>
+        </h1>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="main-card">
+          <h1 id="teks2" class="scale0" style="font-size:16px;">
+            Gosok Kartunya! 🎴<br>
+            <span style="font-size:12px;font-weight:300;color:var(--teks-sub);">
+              Awas kena <span style="color:#c05000;font-weight:600;">2 Petir</span> ya! ⚡
+            </span>
+          </h1>
+          <div class="game-board">
+            <div class="card" data-emoji="🕌"><canvas></canvas></div>
+            <div class="card" data-emoji="🌙"><canvas></canvas></div>
+            <div class="card" data-emoji="⚡"><canvas></canvas></div>
+            <div class="card" data-emoji="✨"><canvas></canvas></div>
+            <div class="card" data-emoji="📖"><canvas></canvas></div>
+            <div class="card" data-emoji="🤲"><canvas></canvas></div>
+            <div class="card" data-emoji="💚"><canvas></canvas></div>
+            <div class="card" data-emoji="🕌"><canvas></canvas></div>
+            <div class="card" data-emoji="✨"><canvas></canvas></div>
+            <div class="card" data-emoji="⚡"><canvas></canvas></div>
+            <div class="card" data-emoji="🌙"><canvas></canvas></div>
+            <div class="card" data-emoji="📖"><canvas></canvas></div>
+            <div class="card" data-emoji="🤲"><canvas></canvas></div>
+            <div class="card" data-emoji="💚"><canvas></canvas></div>
+            <div class="card" data-emoji="🕌"><canvas></canvas></div>
+            <div class="card" data-emoji="✨"><canvas></canvas></div>
+          </div>
+        </div>
+
+        <div id="stiker3" class="abs scale0 stiker" style="margin-top:160px;">
+          <div class="emas-border">
+            <span id="stikerEmoji" style="font-size:42px;">😅</span>
+          </div>
+        </div>
+
+        <div id="scroll-container" class="blocktext scale0 abs">
+          <h1 id="teks3"></h1>
+        </div>
+
+        <ul id="Tombol">
+          <a onclick="fungsiWA()">💬 Hubungi LDK Al-Madaniah</a>
+        </ul>
+
+        <canvas id="game-canvas"></canvas>
+      </div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Library dimuat synchronous, semua di bawah body -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
+
+  <!-- Semua logika app dalam satu blok, jalan setelah 3 library di atas selesai -->
+  <script>
+  (function() {
+
+    var pesanKena =
+      '<b style="font-size:18px;color:var(--hijau-tua)">Dhuarr! Kena ' +
+      '<span style="border-bottom:2px solid #c05000">2 Petir</span>!! ⚡😄</b><br><br>' +
+      'Tenang, ini bukan musibah —<br>' +
+      'ini tanda kamu <b style="color:var(--hijau-tengah)">terpilih</b><br>' +
+      'dapat pesan spesial dari kami! 🌟<br><br>' +
+      '── ᯓᡣ𐭩 ──<br><br>' +
+      '<span style="font-family:\'Scheherazade New\',serif;font-size:22px;color:var(--hijau-tengah);' +
+      'display:block;margin:4px 0 8px;direction:rtl;">مِنَ الْعَائِدِيْنَ وَالْفَائِزِيْنَ</span>' +
+      '<b style="color:var(--hijau-tua)">Minal Aidin Wal Faizin</b> 🙏<br>' +
+      'Mohon Maaf Lahir dan Batin.<br><br>' +
+      'Dari kami, keluarga besar<br>' +
+      '<b style="color:var(--hijau-tengah)">LDK Al-Madaniah</b> 🕌<br>' +
+      '<span style="font-size:12px;color:var(--teks-sub);">Semoga kita senantiasa istiqomah<br>' +
+      'di jalan kebaikan. Aamiin. 🤲</span>';
+
+    var teksSekarang  = 1;
+    var stikerScale   = null;
+    var audio         = document.getElementById('bgAudio');
+    var sudahKlik     = false;
+    var lockBoard     = false;
+    var bombCount     = 0;
+    var scrollInterval;
+    var scrollContainer = document.getElementById('scroll-container');
+
+    /* LOADING */
+    setTimeout(function(){
+      document.getElementById('loadingMsg').style.display = 'none';
+      document.getElementById('loveIn').style.display     = 'flex';
+    }, 1400);
+
+    /* AUTOPLAY — langsung play saat user pertama kali sentuh layar */
+    function tryPlay(){
+      audio.play().catch(function(){});
+    }
+    document.addEventListener('touchstart', tryPlay, {once:true, passive:true});
+    document.addEventListener('click',      tryPlay, {once:true});
+
+    /* TOMBOL BUKA */
+    document.getElementById('btnBuka').onclick = function(){
+      if (sudahKlik) return;
+      sudahKlik = true;
+      audio.play().catch(function(){});
+      document.getElementById('overlayEl').style.display = 'none';
+      document.getElementById('ldk-logo-overlay').classList.add('tampil');
+      setTimeout(function(){
+        document.getElementById('stiker1').classList.add('scale1');
+        document.getElementById('teks1').classList.add('scale1');
+        setTimeout(function(){ swiper.slideNext(); }, 2300);
+      }, 300);
+    };
+
+    /* SWIPER */
+    var swiper = new Swiper('.mySwiper', {
+      pagination: { el: '.swiper-pagination', dynamicBullets: false },
+      allowSlidePrev: false,
+      allowTouchMove: false,
+      on: {
+        slideChange: function(){
+          teksSekarang++;
+          var teksEl   = document.getElementById('teks'   + teksSekarang);
+          var stikerEl = document.getElementById('stiker' + teksSekarang);
+          setTimeout(function(){
+            if (teksEl)   teksEl.classList.add('scale1');
+            if (stikerEl){ stikerEl.classList.add('scale1'); stikerScale = stikerEl; }
+            if (teksSekarang === 2){
+              setTimeout(startGame, 120);
+              swiper.allowSlideNext = false;
+            }
+          }, 60);
+        }
+      }
+    });
+
+    /* WA */
+    window.fungsiWA = function(){
+      Swal.fire({
+        title: 'Alhamdulillah! 🤲',
+        html: 'Silakan hubungi kami melalui <span style="border-bottom:2px solid #c9a84c">WhatsApp</span> LDK Al-Madaniah!',
+        icon: 'success',
+        confirmButtonText: '<b>Hubungi</b>',
+        allowOutsideClick: false,
+        confirmButtonColor: '#1a5c32'
+      }).then(function(){
+        var phone = '6283834341931';
+        var msg   = encodeURIComponent("Assalamu'alaikum, LDK Al-Madaniah! 🕌");
+        window.open('https://wa.me/' + phone + '?text=' + msg, '_blank');
+      });
+    };
+
+    /* GAME */
+    var cards = document.querySelectorAll('.card');
+
+    function startGame(){
+      cards.forEach(function(card){
+        card.style.animation = 'appear .9s forwards';
+        setupScratchCard(card);
+      });
+    }
+
+    function setupScratchCard(card){
+      var canvas = card.querySelector('canvas');
+      var ctx    = canvas.getContext('2d');
+      canvas.width = 46; canvas.height = 46;
+
+      var grad = ctx.createLinearGradient(0, 0, 46, 46);
+      grad.addColorStop(0, 'rgba(201,168,76,0.9)');
+      grad.addColorStop(1, 'rgba(10,46,26,0.8)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 46, 46);
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.font = 'bold 8px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Gosok!', 23, 27);
+
+      var isScratching = false;
+      var revealed     = false;
+
+      function handleScratch(e){
+        if (lockBoard || revealed) return;
+        var rect    = canvas.getBoundingClientRect();
+        var clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        var clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(clientX - rect.left, clientY - rect.top, 13, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalCompositeOperation = 'source-over';
+
+        var d = ctx.getImageData(0,0,46,46).data, t = 0;
+        for (var i = 3; i < d.length; i += 4) if (d[i]===0) t++;
+        if (t / (46*46) > 0.10 && !revealed){
+          revealed = true;
+          card.classList.add('flipped');
+          card.textContent = card.dataset.emoji;
+          canvas.style.display = 'none';
+          if (card.dataset.emoji === '⚡'){
+            bombCount++;
+            card.style.cssText += 'transition:all .4s ease;transform:scale(1.4);background:linear-gradient(135deg,#ff8800,#cc2200);';
+            card.innerHTML += '<div style="position:absolute;inset:0;display:flex;color:#fff;align-items:center;justify-content:center;font-size:8px;font-weight:bold;pointer-events:none;animation:boom .7s ease-out forwards;z-index:10;">ZAP!</div>';
+            card.classList.add('shake');
+            if (bombCount >= 2){ lockBoard = true; setTimeout(endGame, 800); }
+          }
+        }
+      }
+
+      canvas.addEventListener('mousedown',  function(){ isScratching = true; });
+      canvas.addEventListener('mouseup',    function(){ isScratching = false; });
+      canvas.addEventListener('mousemove',  function(e){ if(isScratching) handleScratch(e); });
+      canvas.addEventListener('touchstart', function(e){ isScratching = true; e.preventDefault(); }, {passive:false});
+      canvas.addEventListener('touchend',   function(){ isScratching = false; });
+      canvas.addEventListener('touchmove',  function(e){ if(isScratching){ handleScratch(e); e.preventDefault(); } }, {passive:false});
+    }
+
+    /* END GAME */
+    function endGame(){
+      var mainCard = document.querySelector('.main-card');
+      mainCard.style.cssText = 'transform:scale(0);opacity:0;transition:all .7s ease;';
+      stikerScale = document.getElementById('stiker3');
+      setTimeout(function(){
+        document.querySelectorAll('.swiper-pagination').forEach(function(el){ el.style.display='none'; });
+        mainCard.style.display = 'none';
+        scrollContainer.classList.remove('abs','scale0');
+        scrollContainer.classList.add('scale1');
+        stikerScale.classList.remove('abs','scale0');
+        stikerScale.classList.add('scale1');
+        setTimeout(function(){ document.getElementById('stikerEmoji').textContent='🤲'; }, 400);
+        setTimeout(katanimasi, 220);
+      }, 600);
+    }
+
+    /* TYPEIT */
+    var teks3el = document.getElementById('teks3');
+    teks3el.innerHTML = '';
+
+    function katanimasi(){
+      teks3el.innerHTML = '';
+      new TypeIt('#teks3', {
+        strings: [pesanKena],
+        startDelay: 100, speed: 22, cursor: true,
+        afterComplete: function(){
+          teks3el.innerHTML = pesanKena;
+          setTimeout(function(){
+            stikerScale.classList.remove('scale1');
+            stikerScale.classList.add('scale0');
+            setTimeout(function(){ document.getElementById('stikerEmoji').textContent='💚'; }, 280);
+            setTimeout(function(){
+              mulaiGemerlap('game-canvas');
+              document.getElementById('Tombol').style.cssText='transform:scale(1);opacity:1;';
+              clearInterval(scrollInterval);
+              stikerScale.classList.remove('scale0');
+              stikerScale.classList.add('scale1');
+            }, 360);
+          }, 200);
+        }
+      }).go();
+    }
+
+    /* PARTIKEL */
+    function mulaiGemerlap(id){
+      var canvas = document.getElementById(id);
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      var pts = Array.from({length:35}, function(){
+        return {
+          x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+          r: Math.random()*4+1.5, speed: Math.random()*0.6+0.4,
+          wobble: Math.random()*100,
+          color: Math.random()>0.5?'rgba(201,168,76,0.3)':'rgba(45,134,83,0.2)'
+        };
+      });
+      function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        pts.forEach(function(p){
+          ctx.beginPath();
+          for(var j=0;j<10;j++){
+            var a=(j*Math.PI)/5-Math.PI/2, r2=j%2===0?p.r:p.r*0.4;
+            if(j===0) ctx.moveTo(p.x+r2*Math.cos(a),p.y+r2*Math.sin(a));
+            else       ctx.lineTo(p.x+r2*Math.cos(a),p.y+r2*Math.sin(a));
+          }
+          ctx.closePath(); ctx.fillStyle=p.color; ctx.fill();
+          p.y+=p.speed; p.x+=Math.sin((p.y+p.wobble)/40)*1.5;
+          if(p.y>canvas.height){ p.y=-p.r; p.x=Math.random()*canvas.width; }
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    }
+
+    /* AUTO SCROLL */
+    scrollInterval = setInterval(function(){ scrollContainer.scrollTop += 10; }, 60);
+
+  })();
+  </script>
+
+</body>
+</html>
